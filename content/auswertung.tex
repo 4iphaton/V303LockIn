@@ -1,23 +1,59 @@
 \section{Auswertung}
 \label{sec:Auswertung}
+\subsection{Signalstärke in Abhängigkeit der Phase}
 
-\begin{figure}
+
+
+\input{content/tables/phasen.tex}[H]
+
+\begin{figure}[H]
   \centering
   \includegraphics{build/phasen.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
+  \caption{Änderung der Phase ohne Störung.}
+  \label{fig:ohne}
 \end{figure}
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics{build/phasen_mit.pdf}
-  \caption{Plot.}
-  \label{fig:plot2}
+  \caption{Änderung der Phase mit Störung.}
+  \label{fig:mit}
 \end{figure}
-\begin{figure}
+
+Regressionsgraphen der Form
+\begin{equation}
+  U(x)=a\text{cos}(\phi + b)
+\end{equation}
+Für die Messung ohne Störung ergibt sich:
+\begin{gather*}
+  a=\SI{23.68(94)}{\volt}\\
+  b=\SI{1.32(4)}{}
+  \intertext{unter Berücksichtigung des Gain x2000}
+  a=\SI{11.84(47)e-3}{\volt}
+\end{gather*}
+Für die Messung mit Störung ergibt sich:
+\begin{gather*}
+  a=\SI{25.53(58)}{\volt}\\
+  b=\SI{1.27(2)}{}
+  \intertext{unter Berücksichtigung des Gain x2000}
+  a=\SI{12.77(29)e-3}{\volt}
+\end{gather*}
+\subsection{Intensität der Diode}
+
+\input{content/tables/diode.tex}[H]
+\begin{figure}[H]
   \centering
   \includegraphics{build/diode.pdf}
-  \caption{Plot.}
-  \label{fig:plot3}
+  \caption{Lichtintensität beim Abstand r.}
+  \label{fig:diode}
 \end{figure}
-\input{content/tables/phasen.tex}
-\input{content/tables/diode.tex}
+
+Regressionsgraph der Form
+\begin{equation}
+  U(x)=\frac{a}{r^2}
+\end{equation}
+Es ergibt sich:
+\begin{gather*}
+  a=\SI{24.54(24)e-3}{\volt}
+  \intertext{unter Berücksichtigung des Gain x40}
+  a=\SI{0.613(6)e-3}{\volt}
+\end{gather*}
