@@ -1,2 +1,68 @@
 \section{Diskussion}
 \label{sec:Diskussion}
+
+Der Versuch dient dazu sich mit der Funktionsweise eines Lock-In-Verstärkers
+vertraut zu machen. Dieser soll ein elektrisch verauschtes Signal reinigen
+und verstärken. Hierzu wird ein Referenzsignal von \SI{6.72}{\volt}
+genutzt, welches für ein deutliches Ausgangssignal mit dem verrauschten
+eingehenden Signal in Phase seien sollte. In Abbildung \ref{pic:0p}
+ist das integrierte Signal einer gleichgerichteten Sinusspannung zu erkennen.
+Die Spannung steigt immer stärker bis die überlagerten Sinussignale
+am Maximum angelangt sind. An diesem hat das Ausgangssignal einen Wendepunkt
+und flacht bis zum Ende einer Periode wieder ab, bis es bei der
+Nullstelle des Eingehenden Signals gegen ein Maximum konvergiert.
+Wäre das eingehnde Signal nicht gleichgerichtet, so würde sich
+für das integrierte Signal ein einfacher negativer cosinus ergeben.
+Stattdessen wird der negative Cosinus in diesem Signal alle \SI{180}{\degree}
+abgebrochen und periodisch aneinandergehangen. Betrachtet man mathematisch die Ableitung
+von diesem Konstrukt ergibt sich eine periodische Abfolge des Sinus
+auf je einer halben Periode, sprich der gleichgerichtete Sinus.
+Die folgenden 4 Abbildungen zeigen, wie die integrierte Überlagerung
+von Eingangs- und Referenzspannung für verschieden Phasen aussieht. Bei einer Phase von
+\SI{180}{\degree} wäre nun wieder das oben beschriebene zu sehen, allerdings mit
+negativem Vorzeichen.
+
+Meistens spielt nur die Amplitude des Signals eine Rolle, da
+die eigentliche Form des Signals durch das Gleichrichten und das Überlagern
+mit einer sinusförmigen Funktion ohnehin verloren geht. Die Amplitude ist
+abhängig von der Phase zwischen Eingangs- und Referenzsignal
+sowie dem Verstärkungsfaktor, dem sogenannten Gain. In Abbildung \ref{fig:ohne}
+ist nun zunächst die Amplitude des Ausgangssignals, welches durch
+ein nicht verauschtes Eingangssignal von \SI{10e-3}{\volt} erzeugt wurde,
+mit einem Gain von 2000 in Abhängigkeit der Phase zum Referenzsignal zu sehen.
+Hierbei wurden die Messwerte in Form der Gleichung \eqref{eqn:jangibmirdiegl}
+gefittet. Der Faktor $a$ ist hierbei die  Amplitude $2U_0/\pi$ der Ausgangsspannung,
+welcher nach Einberechnung des Gain sehr nah an den \SI{10e-3}{\volt}
+Eingangsspannung liegt, jedoch durch das verwenden eines nicht genormten
+Referenzsignals leicht nach oben hin verfälscht ist. Der Faktor $b$
+berücksichtigt, dass die Generatoren von Eingangs- und Referenzsignal
+ein nicht einstellbares, konstantes Offset in der Phase haben und gleicht
+dieses aus. In Abbildung \ref{fig:mit} wird das gleiche Signal vor dem Einspeisen
+in den Lock-In-Verstärker mithilfe des Noisegenerators so stark verrauscht,
+dass es als solches nicht mehr erkennbar ist. Der Fehler dieses Faktors,
+welcher durch das Fitten nach \eqref{eqn:err} in Python berechnet wird
+ist kleiner, dies liegt jedoch wahrscheinlich daran, dass wir uns bei
+diesem Teil bereits besser in die Messgeräte eingefunden hatten. Die Abweichung
+zum eigentlichen Wert ist jedoch wie zu erwarten etwas höher geworden, sowie
+der Wert von $a$ an sich, da durch das verrauschen zusätzliche Spannung hinzugefügt
+wird. Jedoch liegen der nicht verrauchte Wert von $a=$ \SI{11.84(47)e-3}{\volt}
+und der verrauschte Wert von $a=$ \SI{12.77(29)e-3}{\volt} sehr nah beieinander,
+wodurch die Funktionsweise des Lock-In-Verstärkers als Siganlfilter verifiziert wird.
+
+Die Funktionsweise des Lock-In-Verstärkers als Verstärker sehr schwacher
+elektrischer Signale mit Hintergrundrauschen wird durch ein Experiment
+mit einer Leuchtdiode und einem Fotosensor nachgeprüft. Die Intensität
+der Diode fällt bekanntermaßen mit dem quadratischen Abstand ab.
+In Plot \ref{fig:diode} ist hierbei die zur Intensität proportionale
+Spannung an dem Fotosensor in Abhängigkeit der Entfernung aufgetragen,
+wobei die Messung durch einen Lock-In-Verstärker untestützt ist.
+Der hierzu angefertigte Fit zeigt, dass die durch den Lock-In-Verstärker
+hervorgehobenen Signale bis \SI{30}{\centi\meter} Entfernung noch sinnvoll gemessen werden
+können. Es muss jedoch beachtet werden, dass die ersten 5 Werte aufgrund von
+hoher Messungenauigkeit nicht verwendet werden.
+Das verstärkte Signal kann auch aus einer Entfernung von bis zu
+\SI{85.5}{\centi\meter} noch gemessen werden. Ohne den Verstärker lässt sich
+das Signal auf \SI{10}{\centi\meter} kaum noch erkennen.
+Hierdurch zeigt sich, dass der Lock-In-Verstärker ein sehr gutes Hilfsmittel
+zum erkennen schwacher verrauschter Signale ist, zumindest sofern man
+ihre Frequenz kennt und somit die Referenzspannung sinnvoll einstellen kann.
